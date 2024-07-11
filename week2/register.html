@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Workshop 3</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="author" content="Nopparat 6606021421012">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+    </head>
+
+    <body>
+        <main>
+
+            <div class="container-sm">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <!-- สร้าง form method post ส่งไปที่ validate.php -->
+                        <form action="validate.php" method="post">
+
+                            <div class="mb-3">
+                                <label for class="form-label">ชื่อเต็ม</label>
+                                <!-- สร้าง input type=text name=fullname บังคับป้อนข้อมูล  -->
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="fullname"
+                                    placeholder="ชื่อเต็ม"
+                                     />
+                            </div>
+
+                            <label for class="form-label">รหัสนักเรียน</label>
+                            <div class="input-group mb-3">
+                                <!-- สร้าง input type=number name=student_number บังคับป้อนข้อมูล  -->
+                                <!-- เมื่อมี event input จะเรียกใช้ function validateLength -->
+                                <input
+                                    type="number"
+                                    class="form-control"
+                                    name="student_number"
+                                    oninput="validateLength(this)"
+                                    required />
+                                <span class="input-group-text"
+                                    id="basic-addon2"><span
+                                        id="input-length">0</span>/13</span>
+                            </div>
+                            <!-- div สำหรับแสดงข้อความ error -->
+                            <div id="error-message"
+                                style="color: red; display: none;">Student
+                                Number < 13 digits.</div>
+
+                            <div class="mb-3">
+                                <label for class="form-label">อีเมล</label>
+                                <!-- สร้าง input type=email name=email บังคับป้อนข้อมูล  -->
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    placeholder="abc@mail.com"
+                                     />
+                            </div>
+
+                            <div class="mb-3">
+                                <!-- สร้าง button submit and reset -->
+                                <button type="submit"
+                                    class="btn btn-success"
+                                    id="btnSubmit">Submit</button>
+                                <button type="reset"
+                                    class="btn btn-warning">Clear</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+
+        <script>
+
+            var btnSubmit = document.getElementById("btnSubmit");
+            var input_length = document.getElementById("input-length");
+            // สร้างตัวแปรเพื่อเก็บ element โดยอ้างอิงตาม id
+            
+                // Create function รับพารามิเตอร์ input
+                function validateLength(input) {
+                    const errorMessage = document.getElementById('error-message');
+                    // สร้างตัวแปรเพื่อเก็บ element โดยอ้างอิงตาม id
+                    input_length.innerText = input.value.length
+                    // เช็คความยาวของ input ไปที่ตัวแปร input_length
+
+                    if (input.value.length < 13) {
+                    // เช็คว่าความยาวของ input น้อยกว่า 13 หรือไม่
+
+                        errorMessage.style.display = 'block';
+                        // เปลี่ยน style display ของ element errorMessage เป็น block
+
+                        errorMessage.innerText = 'Student Number < 13 digits.';
+                        // เปลี่ยนข้อความ ของ element errorMessage
+
+                        btnSubmit.disabled = true;
+                        // disabled button submit
+
+                    } else if (input.value.length > 13 ) {
+                    // เช็คว่าความยาวของ input มากกว่า 13 หรือไม่
+                        errorMessage.style.display = 'block';
+                        // เปลี่ยน style display ของ element errorMessage เป็น block
+
+                        input_length.style.color = 'red';
+                        // เปลี่ยนข้อความ ของ element input_length
+
+                        errorMessage.innerText = 'Student Number > 13 digits.';
+                        // เปลี่ยนข้อความ ของ element errorMessage
+                        
+                        btnSubmit.disabled = true;
+                        // disabled button submit
+                    } else {
+                        errorMessage.style.display = 'none';
+                        // เปลี่ยน style display ของ element errorMessage เป็น none
+
+                        errorMessage.innerText = '';
+                        // เปลี่ยนข้อความ ของ element errorMessage
+
+                        input_length.style.color = 'black';
+                        // เปลี่ยนสีของ element input_length เป็น black
+
+                        btnSubmit.disabled = false;
+                        // enabled button submit
+                    }
+                }
+                </script>
+    </body>
+</html>
