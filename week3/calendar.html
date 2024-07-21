@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>calendar</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
+        <style>
+           /* style tag td id = per */
+            td#per{
+                background-color: #c5c5c5;
+                color: #343a40;
+                border: 1px solid #a7a7a7;
+            }
+            /* style tag td */
+            td {
+                text-align: center;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+            /* style tag td if hover */
+            td:hover {
+                background-color: #f5f5f5;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="row mt-5">
+                <h1>Calendar</h1>
+            </div>
+            <div class="row">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4 id="today"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h4 id="month"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <!-- create table month -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <!-- row header day -->
+                                <tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="per">30</td>
+                                    <td id="1">1</td>
+                                    <td id="2">2</td>
+                                    <td id="3">3</td>
+                                    <td id="4">4</td>
+                                    <td id="5">5</td>
+                                    <td id="6">6</td>
+                                </tr>
+                                <tr>
+                                    <td id="7">7</td>
+                                    <td id="8">8</td>
+                                    <td id="9">9</td>
+                                    <td id="10">10</td>
+                                    <td id="11">11</td>
+                                    <td id="12">12</td>
+                                    <td id="13">13</td>
+                                </tr>
+                                <tr>
+                                    <td id="14">14</td>
+                                    <td id="15">15</td>
+                                    <td id="16">16</td>
+                                    <td id="17">17</td>
+                                    <td id="18">18</td>
+                                    <td id="19">19</td>
+                                    <td id="20">20</td>
+                                </tr>
+                                <tr>
+                                    <td id="21">21</td>
+                                    <td id="22">22</td>
+                                    <td id="23">23</td>
+                                    <td id="24">24</td>
+                                    <td id="25">25</td>
+                                    <td id="26">26</td>
+                                    <td id="27">27</td>
+                                </tr>
+                                <tr>
+                                    <td id="28">28</td>
+                                    <td id="29">29</td>
+                                    <td id="30">30</td>
+                                    <td id="31">31</td>
+                                    <td id="per">1</td>
+                                    <td id="per">2</td>
+                                    <td id="per">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+
+        <!-- import library moment js -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+
+        <script>
+            // get today using monent js format Sunday 21 july 2024
+            const today = moment().format('dddd DD MMMM YYYY');
+            // get day using monent js format 21
+            const day = moment().format('DD');
+            // get month using monent js format July 2024
+            const month = moment().format('MMMM YYYY');
+
+            // get element by id variable day and set style background color
+            document.getElementById(day).style.backgroundColor = '#26a0fc';
+
+            // get element by id today and innerText
+            document.getElementById('today').innerText = today;
+            document.getElementById('month').innerText = month;
+        </script>
+    </body>
+</html>
